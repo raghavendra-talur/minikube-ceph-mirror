@@ -42,7 +42,7 @@ metadata:
 spec:
   dataDirHostPath: /var/lib/rook
   cephVersion:
-    image: ceph/ceph:v15
+    image: ceph/ceph:v16
     allowUnsupported: true
   mon:
     count: 1
@@ -63,6 +63,7 @@ spec:
         timeout: 600s
 EOF
 kubectl create -f ~/Code/go/src/github.com/rook/rook/cluster/examples/kubernetes/ceph/toolbox.yaml --context=${PROFILE}
+sleep 10
 cat <<EOF | kubectl --context=${PROFILE} apply -f -
 apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
